@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de Distribuciones</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f0f0; padding: 2em; }
+        .panel { background: #fff; padding: 2em; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 800px; margin: auto; }
+        h1 { text-align: center; color: #333; }
+        form { display: flex; flex-direction: column; gap: 1em; }
+        input, label { font-size: 1em; }
+        input[type="submit"] { background: #28a745; color: white; border: none; padding: 0.5em; border-radius: 5px; cursor: pointer; }
+        .error { color: red; }
+        img { max-width: 100%; margin-top: 2em; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>Comparador de Distribución Normal</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Archivo Excel:</label>
+            <input type="file" name="datafile" required>
+            <label>Columna a analizar:</label>
+            <input type="text" name="column" placeholder="Nombre de la columna" required>
+            <label>Media de referencia:</label>
+            <input type="text" name="mean" value="{{ mean }}" required>
+            <label>Desviación estándar de referencia:</label>
+            <input type="text" name="std" value="{{ std }}" required>
+            <input type="submit" value="Generar Gráfico">
+        </form>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        {% if image %}<img src="{{ image }}" alt="Gráfico generado">{% endif %}
+    </div>
+</body>
+</html>
