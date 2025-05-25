@@ -89,6 +89,6 @@ def index():
     return render_template_string(HTML_TEMPLATE, plot_url=plot_url, error=error)
 
 # Iniciar la app
-if __name__ == '__main__':
-    app.run(port=5001)
+if __name__ == "__main__":
+    app.run(port=5001, debug=True)
 
